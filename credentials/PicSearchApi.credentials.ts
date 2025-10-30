@@ -1,8 +1,12 @@
 import type {
 	IAuthenticateGeneric,
+	ICredentialTestRequest,
 	ICredentialType,
 	INodeProperties,
+	Icon 
 } from 'n8n-workflow';
+
+
 
 export class PicSearchApi implements ICredentialType {
 	name = 'picSearchApi';
@@ -10,6 +14,8 @@ export class PicSearchApi implements ICredentialType {
 	displayName = 'Pic Search API';
 
 	documentationUrl = 'https://github.com/org/-pic-search?tab=readme-ov-file#credentials';
+
+	icon: Icon = 'file:../icons/image.svg'; // 指向内置的图片图标
 
 	properties: INodeProperties[] = [
 		{
@@ -27,5 +33,18 @@ export class PicSearchApi implements ICredentialType {
 		properties: {},
 	};
 
-	// 移除了test属性，因为我们在导入时已经移除了ICredentialTestRequest类型
+	// 添加test属性
+	test: ICredentialTestRequest = {
+		request: {
+			baseURL: 'https://cn.apihz.cn/api/img',
+			url: '/apihzimgsougou.php',
+			method: 'GET',
+			qs: {
+				id: '88888888',
+				key: '={{$credentials.apiKey}}',
+				words: 'test',
+				page: 1
+			}
+		}
+	};
 }

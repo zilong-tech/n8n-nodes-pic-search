@@ -1,4 +1,4 @@
-import { NodeConnectionTypes, type INodeExecutionData, type INodeType, type INodeTypeDescription } from 'n8n-workflow';
+import { type IDataObject ,NodeConnectionTypes, type INodeExecutionData, type INodeType, type INodeTypeDescription, type IExecuteFunctions } from 'n8n-workflow';
 
 export class PicSearch implements INodeType {
 	description: INodeTypeDescription = {
@@ -66,7 +66,6 @@ export class PicSearch implements INodeType {
 					name: 'key',
 					type: 'string',
 					default: '88888888',
-		
 					description: 'API Key',
 					routing: {
 						send: {
@@ -80,7 +79,6 @@ export class PicSearch implements INodeType {
 					name: 'page',
 					type: 'number',
 					default: 1,
-			
 					description: '搜索结果页码',
 					routing: {
 						send: {
@@ -95,7 +93,6 @@ export class PicSearch implements INodeType {
 					type: 'string',
 					default: '',
 					required: true,
-	
 					description: '搜索关键词',
 					routing: {
 						send: {
@@ -104,13 +101,11 @@ export class PicSearch implements INodeType {
 						},
 					},
 				},
-		
 		],
 	};
 
-	
 	// 节点执行方法
-	async execute(this: any): Promise<INodeExecutionData[][]> {
+	async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
 		const items = this.getInputData();
 		const returnData: INodeExecutionData[] = [];
 
@@ -142,15 +137,16 @@ export class PicSearch implements INodeType {
 				const resultData = Array.isArray(response) ? response : [response];
 				
 				// 为每个结果创建INodeExecutionData格式的项
-				resultData.forEach((item: any) => {
+				resultData.forEach((item: Record<string, unknown>) => {
 					returnData.push({
-						json: item,
+						json: item  as IDataObject, 
+						
 					});
 				});
-			} catch (error: any) {
+			} catch (error) {
 				if (this.continueOnFail()) {
 					returnData.push({
-						json: { error: error.message || 'Unknown error' },
+						json: { error: (error as Error).message || 'Unknown error' },
 					});
 				} else {
 					throw error;

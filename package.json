@@ -1,7 +1,7 @@
 {
   "name": "n8n-nodes-pic-search",
   "version": "0.1.0",
-  "description": "",
+  "description": "n8n community nodes for pic search",
   "license": "MIT",
   "homepage": "",
   "keywords": ["n8n-community-node-package"],
@@ -26,6 +26,11 @@
     "credentials": ["dist/credentials/PicSearchApi.credentials.js"],
     "nodes": ["dist/nodes/PicSearch/PicSearch.node.js"]
   },
+  
+  "npm": {
+    "publish": false
+  },
+  
   "devDependencies": {
     "@n8n/node-cli": "*",
     "eslint": "9.32.0",
