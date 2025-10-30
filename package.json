@@ -1,11 +1,16 @@
 {
   "name": "n8n-nodes-pic-search",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "n8n community nodes for pic search",
   "license": "MIT",
   "homepage": "",
-  "keywords": ["n8n-community-node-package"],
-  "author": { "name": "zilong-tech", "email": "zysspace@163.com" },
+  "keywords": [
+    "n8n-community-node-package"
+  ],
+  "author": {
+    "name": "zilong-tech",
+    "email": "zysspace@163.com"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/zilong-tech/n8n-nodes-pic-search.git"
@@ -19,18 +24,22 @@
     "release": "n8n-node release",
     "prepublishOnly": "n8n-node prerelease"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "n8n": {
     "n8nNodesApiVersion": 1,
     "strict": true,
-    "credentials": ["dist/credentials/PicSearchApi.credentials.js"],
-    "nodes": ["dist/nodes/PicSearch/PicSearch.node.js"]
+    "credentials": [
+      "dist/credentials/PicSearchApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/PicSearch/PicSearch.node.js"
+    ]
   },
-  
   "npm": {
     "publish": false
   },
-  
   "devDependencies": {
     "@n8n/node-cli": "*",
     "eslint": "9.32.0",
@@ -38,5 +47,7 @@
     "release-it": "^19.0.4",
     "typescript": "5.9.2"
   },
-  "peerDependencies": { "n8n-workflow": "*" }
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  }
 }
