@@ -1,11 +1,12 @@
 {
   "name": "n8n-nodes-pic-search",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "n8n community nodes for pic search",
   "license": "MIT",
   "homepage": "",
   "keywords": [
-    "n8n-community-node-package","n8n-nodes-pic-search"
+    "n8n-community-node-package",
+    "n8n-nodes-pic-search"
   ],
   "author": {
     "name": "zilong-tech",
